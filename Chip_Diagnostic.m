@@ -1,6 +1,6 @@
 %figure(1);
 
-figure;
+figure(1);
 
 clear;
 
@@ -28,7 +28,7 @@ red_data=zeros(length(chip_corner_points),1);
 green_data=zeros(length(chip_corner_points),1);
 blue_data=zeros(length(chip_corner_points),1);
 gray_data=zeros(length(chip_corner_points),1);
-
+[m n c]=size(chip_imdata_color);
 for i = 1:length(chip_corner_points)
     y=chip_corner_points(i,1);
     x=chip_corner_points(i,2);
@@ -50,6 +50,6 @@ mean(gray_data)
 std(red_data)
 std(green_data)
 std(blue_data)
-mean(gray_data)
+std(gray_data)
 
 %scatter(bad_chip_corner_points(:,2),bad_chip_corner_points(:,1));
