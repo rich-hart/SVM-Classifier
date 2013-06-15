@@ -20,9 +20,20 @@ for i = 1:length(file_names)
 
 end
 
+indexs=1:length(data);
+train_index=datasample(indexs,floor(length(data)/2),'Replace',false);
+test_indexs=setdiff(indexs,train_index);
 
+test_indexs=test_indexs';
+train_index=train_index';
 
-SVMStruct = svmtrain(data,group);
+training=data(train_index,:);
+testing=data(test_indexs,:);
+
+training_group=group(train_index);
+testing_group=group(test_indexs);
+
+SVMStruct = svmtrain(training,training_group);
 
 %gray_double=im2double(chip_imdata_gray);
 %p=entropy(gray_double);
