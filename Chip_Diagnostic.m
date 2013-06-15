@@ -52,4 +52,10 @@ std(green_data)
 std(blue_data)
 std(gray_data)
 
+mean2(chip_imdata_color)
+std2(chip_imdata_color)
+gray_double=im2double(chip_imdata_gray);
+p=entropy(gray_double);
+en=-sum(p.*log2(p))
+
 %scatter(bad_chip_corner_points(:,2),bad_chip_corner_points(:,1));
