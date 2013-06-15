@@ -35,6 +35,16 @@ testing_group=group(test_indexs);
 
 SVMStruct = svmtrain(training,training_group);
 
+svm_group_results=svmclassify(SVMStruct,testing);
+
+correct=0;
+for i = 1:length(svm_group_results)
+if(strcmp(svm_group_results{i},testing_group{i}));
+    correct=correct+1;
+end
+
+end
+percent_correct=correct/length(svm_group_results);
 %gray_double=im2double(chip_imdata_gray);
 %p=entropy(gray_double);
 %en=-sum(p.*log2(p))
