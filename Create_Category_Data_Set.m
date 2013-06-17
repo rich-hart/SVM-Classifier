@@ -14,9 +14,12 @@ image_analysis_functions={
     'STDV_GRAY_CORNER_POINTS'
     'STDV_ENTIRE_COLOR_IMAGE'
     };
+
+
 total_number_feature_vectors=length(image_analysis_functions);
 
 image_set_file_names=GetImageFileNames( image_set_directory );
+
 total_number_set_samples=length(image_set_file_names);
 
 set_data=zeros(total_number_set_samples,total_number_feature_vectors);

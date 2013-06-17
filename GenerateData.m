@@ -1,9 +1,11 @@
-function [ data ] = GenerateData( chip_imdata_color )
+function [ data ] = GenerateData( chip_imdata_color ,image_analysis_functions )
 %UNTITLED6 Summary of this function goes here
 %   Detailed explanation goes here
 %ax(1) = subplot(1,2,1);
 
 %imshow(chip_imdata_color);
+
+total_features=length(image_analysis_functions);
 
 chip_imdata_gray=rgb2gray(chip_imdata_color);
 
@@ -39,20 +41,36 @@ end
 
 %imshow(chip_imdata_color);
 
-data=zeros(1,10);
+data=zeros(1,total_features);
+value=0;
+for i=1:total_features 
+    feature= image_analysis_functions{i};
+    switch feature
+        case 'AVERAGE_RED_CORNER_POINTS'
+            value=mean(red_data);
+        case  'AVERAGE_GREEN_CORNER_POINTS'
+            value=mean(green_data);
+        case 'AVERAGE_BLUE_CORNER_POINTS'
+            value=mean(blue_data);
+        case  'AVERAGE_GRAY_CORNER_POINTS'
+            value=mean(gray_data);
+        case  'AVERAGE_ENTIRE_COLOR_IMAGE'
+            value=mean2(chip_imdata_color);
+        case  'STDV_RED_CORNER_POINTS'
+            value=std(red_data);
+        case  'STDV_GREEN_CORNER_POINTS'
+            value=std(green_data);
+        case  'STDV_BLUE_CORNER_POINTS'
+            value=std(blue_data);
+        case  'STDV_GRAY_CORNER_POINTS'
+           value=std(gray_data);
+        case 'STDV_ENTIRE_COLOR_IMAGE'
+            value=std2(chip_imdata_color);
+            
+    end
+            data(1,i)=value;
 
-data(1,1)=mean(red_data);
-data(1,2)=mean(green_data);
-data(1,3)=mean(blue_data);
-data(1,4)=mean(gray_data);
-
-data(1,5)=std(red_data);
-data(1,6)=std(green_data);
-data(1,7)=std(blue_data);
-data(1,8)=std(gray_data);
-
-data(1,9)=mean2(chip_imdata_color);
-data(1,10)=std2(chip_imdata_color);
+end
 
 
 end
