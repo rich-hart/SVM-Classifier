@@ -15,9 +15,12 @@ p_origenal = path;
 path_temp = path(p_origenal  , image_set_directory);
 path(path_temp,image_set_complement_directory);
 
+data=Create_Category_Data_Set(image_set_directory);
+%{
 
 image_set_file_names=GetImageFileNames( image_set_directory );
 image_set_complement_file_names=GetImageFileNames( image_set_complement_directory);
+
 
 image_analysis_functions={
     'AVERAGE_RED_CORNER_POINTS'
@@ -47,7 +50,7 @@ for i = 1:total_number_set_samples
     
     chip_imdata_color = imread(file_name);
 
-    set_data(i,:)=GenerateData(chip_imdata_color);
+    set_data(i,:)=GenerateData(chip_imdata_color,image_analysis_functions);
 
 end
 
@@ -57,7 +60,7 @@ for i = 1:total_number_set_complement_samples
     
     chip_imdata_color = imread(file_name);
 
-    set_complement_data(i,:)=GenerateData(chip_imdata_color);
+    set_complement_data(i,:)=GenerateData(chip_imdata_color,image_analysis_functions);
 
 end
 
@@ -101,5 +104,5 @@ end
 
 end
 percent_correct=correct/length(svm_group_results);
-
+%}
 path(p_origenal);
