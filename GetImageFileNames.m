@@ -1,6 +1,7 @@
 function [ file_names ] = GetImageFileNames( dir_name )
 %UNTITLED7 Summary of this function goes here
 %   Detailed explanation goes here
+
 directory_listings = dir(dir_name);
 total_listings=length(directory_listings);
 total_listings=total_listings-2;

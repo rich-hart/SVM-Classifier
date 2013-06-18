@@ -26,10 +26,6 @@ set_data=zeros(total_number_set_samples,total_number_feature_vectors);
 
 
 
-
-
-
-
 for i = 1:total_number_set_samples
 
     file_name= image_set_file_names{i};

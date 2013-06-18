@@ -6,17 +6,21 @@ classification program.
 Author: Rich Hart
 %}
 clear;
-
-image_set_directory='Flowers';
-image_set_complement_directory='Foliage';
-
-
 p_origenal = path;
-path_temp = path(p_origenal  , image_set_directory);
-path(path_temp,image_set_complement_directory);
+
+try
+image_set_directory='Classification_Problems/Plants/Flowers';
+image_set_complement_directory='Classification_Problems/Plants/Foliage';
+
+
+temp_path=path(p_origenal  , image_set_directory);
+temp_path=path(temp_path  , image_set_complement_directory);
+
 
 Create_And_Test_SVM( image_set_directory,image_set_complement_directory )
-%Create_SVM_Classifier(image_set_directory,image_set_complement_directory);
- 
+%SVMStruct=Create_SVM_Classifier(image_set_directory,image_set_complement_directory);
+catch ME
+   path(p_origenal); 
+end
 
 path(p_origenal);

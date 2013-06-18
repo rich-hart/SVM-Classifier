@@ -6,7 +6,7 @@ svm_postive_parameters=Generate_SVM_Parameters( image_set_directory );
 svm_negative_parameters=Generate_SVM_Parameters( image_set_complement_directory );
 
 data=[svm_postive_parameters.set_data;svm_negative_parameters.set_data];
-lables=[svm_postive_parameters.group_set;svm_negative_parameters.group_set];
+lables=[svm_postive_parameters.set_labels;svm_negative_parameters.set_labels];
 
 SVMStruct = svmtrain(data,lables);
 

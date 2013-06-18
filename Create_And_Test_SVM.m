@@ -6,8 +6,7 @@ svm_postive_parameters=Generate_SVM_Parameters( image_set_directory );
 svm_negative_parameters=Generate_SVM_Parameters( image_set_complement_directory );
 
 data=[svm_postive_parameters.set_data;svm_negative_parameters.set_data];
-lables=[svm_postive_parameters.group_set;svm_negative_parameters.group_set];
-
+lables=[svm_postive_parameters.set_labels;svm_negative_parameters.set_labels];
 
 total_number_samples=length(data);
 indexs=1:total_number_samples;
@@ -34,7 +33,7 @@ if(strcmp(svm_group_results{i},testing_lables{i}));
 end
 
 end
-percent_correct=correct/length(svm_group_results);
+percent_correct=100.0*correct/length(svm_group_results);
 
 end
 
