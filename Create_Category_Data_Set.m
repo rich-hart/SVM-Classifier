@@ -1,6 +1,6 @@
 function [ set_data ] = Create_Category_Data_Set( image_set_directory )
-%UNTITLED13 Summary of this function goes here
-%   Detailed explanation goes here
+% This function takes a directory path to a set of images. The function
+% then analysis the 
 
 image_analysis_functions={
     'AVERAGE_RED_CORNER_POINTS'
@@ -18,7 +18,7 @@ image_analysis_functions={
 
 total_number_feature_vectors=length(image_analysis_functions);
 
-image_set_file_names=GetImageFileNames( image_set_directory );
+image_set_file_names=Get_Directory_Information( image_set_directory );
 
 total_number_set_samples=length(image_set_file_names);
 

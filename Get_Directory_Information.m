@@ -1,6 +1,6 @@
 function [ file_names ] = Get_Directory_Information( dir_name )
-%UNTITLED7 Summary of this function goes here
-%   Detailed explanation goes here
+% This function reads a directiories infromation and returns its results.
+
 
 directory_listings = dir(dir_name);
 total_listings=length(directory_listings);
